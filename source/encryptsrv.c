@@ -1,7 +1,6 @@
 #include "ps4.h"
 #include "encryptsrv_args.h"
 
-
 int translate_type(int type)
 {
   switch (type)
