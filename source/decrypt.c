@@ -1,5 +1,10 @@
-#include "decrypt.h"
+#include "bls.h"
+#include "decryptio.h"
+#include "defines.h"
+#include "encryptsrv.h"
+#include "pup.h"
 #include "time_utils.h"
+#include <ps4.h>
 
 int verify_segment(const decrypt_state* state, int index, pup_segment* segment, int additional)
 {

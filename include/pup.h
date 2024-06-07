@@ -1,5 +1,4 @@
-#ifndef __PUP_H__
-#define __PUP_H__
+#pragma once
 
 typedef struct _pup_file_header
 {
@@ -38,5 +37,3 @@ typedef struct _pup_block_info
   uint32_t size;
 }
 pup_block_info;
-
-#endif

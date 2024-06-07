@@ -1,6 +1,4 @@
 #include "decryptio.h"
-#include "defines.h"
-#include "pupdebug.h"
 
 #define chunksize 2097152
 
@@ -33,7 +31,7 @@ ssize_t readbytes(const decrypt_state * state, size_t offset, size_t bytes, void
           return -1;
       }
 
-      printf_debug("Seeked to position " SSIZET_FMT " in input file.\n", result);
+      printf_debug("Seeked to position %zd in input file.\n", result);
   }
 
   size_t rchunksize = (bytes >= chunksize) ? chunksize : bytes;
@@ -54,18 +52,17 @@ ssize_t readbytes(const decrypt_state * state, size_t offset, size_t bytes, void
 
   if ((result == -1) || (bytesread != bytes)) {
       int errcode = errno;
-      printf_debug("Read failed; Read " SSIZET_FMT " of " SSIZET_FMT "bytes - Result: %d (%s)\n", bytesread, bytes,
+      printf_debug("Read failed; Read %zd of %zd bytes - Result: %d (%s)\n", bytesread, bytes,
 												  errcode,
 												  strerror(errcode));
       return -1;
   }
 
-//  printf_debug("Read " SSIZET_FMT " of " SSIZET_FMT " bytes to from input file.\n", bytesread, byte);
+//  printf_debug("Read %zd of %zd bytes to from input file.\n", bytesread, byte);
 
   return bytesread;
 
 }
-
 
 ssize_t writebytes(const decrypt_state * state, size_t offset, size_t bytes, void * buffer, size_t buffersize) {
 
@@ -96,7 +93,7 @@ ssize_t writebytes(const decrypt_state * state, size_t offset, size_t bytes, voi
           return -1;
       }
 
-      printf_debug("Seeked to position " SSIZET_FMT " in output file.\n", result);
+      printf_debug("Seeked to position %zd in output file.\n", result);
   }
 
   size_t wchunksize = (bytes >= chunksize) ? chunksize : bytes;
@@ -117,13 +114,13 @@ ssize_t writebytes(const decrypt_state * state, size_t offset, size_t bytes, voi
 
   if ((result == -1) || (byteswritten != bytes)) {
       int errcode = errno;
-      printf_debug("Write failed; Write " SSIZET_FMT " of " SSIZET_FMT "bytes - Result: %d (%s)\n", byteswritten,
+      printf_debug("Write failed; Write %zd of %zd bytes - Result: %d (%s)\n", byteswritten,
 												    bytes, errcode,
 												    strerror(errcode));
       return -1;
   }
 
-//  printf_debug("Write " SSIZET_FMT " of " SSIZET_FMT " bytes to output file.\n", byteswritten, bytes);
+//  printf_debug("Write %zd of %zd bytes to output file.\n", byteswritten, bytes);
 
   return byteswritten;
 

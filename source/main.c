@@ -1,8 +1,9 @@
+#include <ps4.h>
+#include "decrypt.h"
+
 //#define DEBUG_SOCKET
 #define DEBUG_IP "192.168.2.2"
 #define DEBUG_PORT 9023
-
-#include "decrypt.h"
 
 extern int DEBUG_SOCK;
 
